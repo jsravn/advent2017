@@ -32,3 +32,4 @@ main = do
   putStrLn $ "day1p1: " ++ day1p1 day1Input
   putStrLn $ "day1p2: " ++ day1p2 day1Input
   putStrLn $ "day2p1: " ++ show (day2p1 day2Input)
+  putStrLn $ "day2p2: " ++ show (day2p2 day2Input)
