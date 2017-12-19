@@ -1,26 +1,39 @@
 module Day1
-  ( day1
+  ( day1p1
+  , day1p2
   ) where
 
 import           Data.Char
 
-pairwise :: String -> [(Char, Char)]
-pairwise str = zip infstr infstr'
+pairwiseShift :: Int -> String -> [(Char, Char)]
+pairwiseShift n str = zip infstr infstr'
   where
     infstr = cycle str
-    infstr' =
-      case infstr of
-        s:ss -> ss
+    infstr' = drop n infstr
 
+-- Part 1
+---------
 f :: (Char, Char) -> Integer -> Integer
 f (a, b) acc
   | a == b = acc + toInteger (digitToInt a)
   | otherwise = acc
 
-day1' :: String -> Integer
-day1' s = foldr f 0 pws
+day1p1' :: String -> Integer
+day1p1' s = foldr f 0 pws
   where
-    pws = take (length s) (pairwise s)
+    pws = take (length s) (pairwiseShift 1 s)
 
-day1 :: String -> String
-day1 = show . day1'
+day1p1 :: String -> String
+day1p1 = show . day1p1'
+
+-- Part 2
+---------
+
+day1p2' :: String -> Integer
+day1p2' s = foldr f 0 pws
+  where
+    pws = take l (pairwiseShift (l `div` 2) s)
+    l = length s
+
+day1p2 :: String -> String
+day1p2 = show . day1p2'
