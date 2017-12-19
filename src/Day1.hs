@@ -2,7 +2,7 @@ module Day1
   ( day1
   ) where
 
-import Data.Char
+import           Data.Char
 
 pairwise :: String -> [(Char, Char)]
 pairwise str = zip infstr infstr'
@@ -11,6 +11,7 @@ pairwise str = zip infstr infstr'
     infstr' =
       case infstr of
         s:ss -> ss
+
 f :: (Char, Char) -> Integer -> Integer
 f (a, b) acc
   | a == b = acc + toInteger (digitToInt a)
