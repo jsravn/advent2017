@@ -35,10 +35,21 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - advent
+    - raw-strings-qq
 
 tests:
-  advent-test:
+  day1-test:
     main:                Day1Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - advent
+    - hspec == 2.4.4
+  day2-test:
+    main:                Day2Spec.hs
     source-dirs:         test
     ghc-options:
     - -threaded
